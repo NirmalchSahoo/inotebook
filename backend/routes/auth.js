@@ -13,7 +13,7 @@ const JWT_SECRET = 'Nisghcdeybue@#ghty';
 // create user using : POST "/api/auth/" . doesn't required auth // no login required
 
 router.post(
-  '/createUser',
+  '/createuser',
   [
     // name must be at least 5 chars long
     body('name', 'Enter a valid name').isLength({ min: 3 }),
@@ -121,7 +121,7 @@ router.post(
 // ROUTE 3
 // get logged in user details : POST "/api/auth/getuser" . doesn't required auth // login required
 
-router.get('/getUser', fetchUser, async (req, res) => {
+router.get('/getuser', fetchUser, async (req, res) => {
   try {
     userId = req.user.id;
     const user = await User.findById(userId).select('-password');
