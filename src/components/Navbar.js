@@ -1,16 +1,27 @@
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FaBookOpen } from 'react-icons/fa'; // A more elegant book icon
 
 const Navbar = () => {
-  let location = useLocation();
+  let navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setTimeout(() => {
+      navigate('/login');
+    }, 100); // Small delay to ensure the state updates
+  };
 
-  useEffect(() => {}, [location]);
+  let location = useLocation();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="#">
-          Navbar
+        {/* Icon and brand name with better styling */}
+        <Link className="navbar-brand d-flex align-items-center" to="#">
+          <FaBookOpen style={{ fontSize: '1.8rem', marginRight: '10px' }} />
+          <span style={{ fontSize: '1.4rem', fontWeight: 'bold' }}>
+            iNotebook
+          </span>
         </Link>
         <button
           className="navbar-toggler"
@@ -47,17 +58,34 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          {!localStorage.getItem('token') ? (
+            <form className="d-flex" role="search">
+              <div>
+                <Link
+                  className="btn btn-primary mx-2"
+                  to={'/signup'}
+                  role="button"
+                >
+                  Signup
+                </Link>
+                <Link
+                  className="btn btn-primary mx-2"
+                  to={'/login'}
+                  role="button"
+                >
+                  Login
+                </Link>
+              </div>
+            </form>
+          ) : (
+            <Link
+              onClick={handleLogout}
+              className="btn btn-primary mx-2"
+              role="button"
+            >
+              Logout
+            </Link>
+          )}
         </div>
       </div>
     </nav>

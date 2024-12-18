@@ -36,3 +36,78 @@
     transform: rotate(360deg);
   }
 }
+
+.about-container {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.about-header {
+  margin-bottom: 2rem;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  color: #343a40;
+  margin-bottom: 0.5rem;
+}
+
+.about-header p {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+.about-card-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.about-card {
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.about-card .card-body {
+  padding: 2rem;
+}
+
+.about-card .card-title {
+  font-size: 1.8rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.about-card .card-text {
+  font-size: 1rem;
+  color: #495057;
+}
+
+.about-footer {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-top: 3rem;
+}
+
+.about-footer p {
+  margin: 0;
+}
+
+/* Hover effect for navbar brand */
+.navbar-brand:hover {
+  color: #f1c40f; /* Golden color on hover */
+}
+
+/* Hover effect for the icon */
+.navbar-brand svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Scale icon on hover */
+.navbar-brand:hover svg {
+  transform: scale(1.1); /* Slight zoom-in effect for the icon */
+}
